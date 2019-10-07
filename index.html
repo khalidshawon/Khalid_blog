@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>THE WRITER</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/small-business.css" rel="stylesheet" />
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+
+
+   <!-- Compiled and minified JavaScript -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">THE WRITER</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="logged-in" style="display: none;">
+              <a class="grey-text"  href="about_index.html">About<span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="logged-in" style="display: none;">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+			  </li>
+			  <li class="logged-in" style="display: none;">
+				<a href="#" class="grey-text" id="logout">Logout</a>
+			  </li>
+
+			  <li class="logged-out" class="left-align" style="display: none;">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+			  </li>
+			  <li class="logged-out" class="left-align" style="display: none;">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+			  </li>
+            <li class="logged-in" style="display: none;">
+						<a href="#" class="grey-text modal-trigger" data-target="modal-create">Comment</a>
+					</li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+      <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn black darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn black darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+      <div class="account-extras"></div>
+    </div>
+  </div>
+  <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Comment</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Your Name</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Your Comment</label>
+        </div>
+        <button class="btn black darken-2 z-depth-0">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+    </ul>
+  </div>
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Heading Row -->
+      <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+		<marquee scrollamount="1"
+direction="left"
+behavior="alternate">
+
+<img src="images/personal.jpg" alt="" />
+</marquee>
+
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+          <h1 class="font-weight-light">Khalid Hasan</h1>
+          <p align="left">
+            Khalid Hasan (Born: 18 April 1987)is a Bangladeshi writer, scholar, and blogger.His breakthrough was his debut novel Anondito Akashe published in 2004.He wrote over 50 fiction and non-fiction books, many of which were bestsellers in Bangladesh.
+          </p>
+          <a class="btn black darken-2 z-depth-0" href="about_index.html">More About Khalid</a>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Call to Action Well -->
+      <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body">
+          <p class="text-white m-0">"To be or not to be, that's the question"- Khalid</p>
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Non Fiction</h2>
+              <p class="card-text">
+                Khalid Hasan has writeen many non fictional books. His famous biographical books are "Ballpoint","Pencil","Motor cycle","Gari".
+                He has got nomination for "Oscar" for his famous non fictional book "Shirir Tole Birir Dokan".
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="Non_Fiction_index.html" class="btn black darken-2 z-depth-0"
+                >More Info</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Fiction</h2>
+              <p class="card-text">
+                Khalid Hasan has written many fictional novels worthy mentionables are "Nasir Ali","Ramu","Aaj Shonibar" etc.
+                Khalid wrote his debut novel Anondito Akashe (In Happy Sky) while he was a university student.
+                The novel was published in 2004 by the initiative of writer Ahmed Sofa under Khan Brother's Publishers.
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="Fiction_index.html" class="btn black darken-2 z-depth-0"
+                >More Info</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Science Fiction</h2>
+              <p class="card-text">
+                Khalid Hasan is also famous for his Scince fictions.
+                He has got many international awards for his bestsellers Scince fiction.
+                His famous works included "Bebuner Mohakash Jatra","CSE kno porlam go","Short term Maniac" etc
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="Science_index.html" class="btn black darken-2 z-depth-0"
+                >More Info</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+    </div>
+
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; khalidshawon 2019
+        </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBttziUSSoqCYkGcG8pYW94PH1UONEase4",
+    authDomain: "practice-user-login.firebaseapp.com",
+    databaseURL: "https://practice-user-login.firebaseio.com",
+    projectId: "practice-user-login",
+    storageBucket: "practice-user-login.appspot.com",
+    messagingSenderId: "876418953093",
+    appId: "1:876418953093:web:eef58ff64c10eaa1795eec",
+    measurementId: "G-42TSR29RYM"
+    };
+    firebase.initializeApp(config);
+
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/blog-post.css" rel="stylesheet">
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+
+
+   <!-- Compiled and minified JavaScript -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">THE WRITER</a>
+      <button class="navbar-toggler"
+	  type="button"
+	  data-toggle="collapse"
+	  data-target="#navbarResponsive"
+	  aria-controls="navbarResponsive"
+	  aria-expanded="false"
+	  aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about_index.html">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact_index.html">Contact</a>
+          </li>
+		   <li class="logged-in" style="display: none;">
+						<a href="#" class="grey-text modal-trigger" data-target="modal-create">Comment</a>
+					</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Comment</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Your Name</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Your Comment</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+    </ul>
+  </div>
+
+
+     <!-- Comment LIST -->
+  <div class="container logged-in" style="margin-top: 40px;">
+      <ul class="collapsible z-depth-0 comment" style="border: none;">
+
+      </ul>
+    </div>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4">Scince Fiction</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <a href="#">Khalid Hasan</a>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>First published on 13 August 2007</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img src="images/scifi.jpg" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire, des cartes mémoire et des quiz amusants.</p>
+
+        <p>Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire, des cartes mémoire et des quiz amusants.</p>
+
+        <p>Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire, des cartes mémoire et des quiz amusants.</p>
+
+        <blockquote class="blockquote">
+          <p class="mb-0">Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire.</p>
+          <footer class="blockquote-footer">Someone famous in
+            <cite title="Source Title">Source Title</cite>
+          </footer>
+        </blockquote>
+
+        <p>Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire, des cartes mémoire et des quiz amusants.</p>
+
+        <p>Chaque vidéo est livrée avec des outils d’apprentissage intégrés, notamment des sous-titres cliquables, des traductions en anglais professionnel, des listes de vocabulaire, des cartes mémoire et des quiz amusants.</p>
+
+        <hr>
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+        <!-- Side Widget -->
+
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; khalidshawon 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
